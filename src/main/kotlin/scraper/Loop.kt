@@ -17,6 +17,8 @@ fun gameLoop(){
         role.execute(creep)
     }
 
+    Spawner.removeDeadCreeps()
+
     // try to fulfill stage for each room.
     for (roomPair in Game.rooms){
         val room = roomPair.component2()
@@ -26,7 +28,7 @@ fun gameLoop(){
 
         val stage = Manager.getStage(room.controller!!.level)
 
-
+        Spawner.fulfill(stage, room)
     }
 
 

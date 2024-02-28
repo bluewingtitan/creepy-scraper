@@ -1,6 +1,6 @@
 package scraper.tasks
 
-import scraper.homeRoomId
+import scraper.homeRoomName
 import screeps.api.*
 
 class UpgradeTask: Task {
@@ -9,7 +9,7 @@ class UpgradeTask: Task {
             return TaskResult.Succeeded
         }
 
-        val spawn = Game.rooms[creep.memory.homeRoomId] ?: return TaskResult.Failed
+        val spawn = Game.rooms[creep.memory.homeRoomName] ?: return TaskResult.Failed
         val controller = spawn.controller ?: return TaskResult.Failed
 
         if (creep.upgradeController(controller) == ERR_NOT_IN_RANGE){
