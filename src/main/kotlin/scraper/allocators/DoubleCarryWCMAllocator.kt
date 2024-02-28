@@ -1,17 +1,19 @@
 package scraper.allocators
 
-import screeps.api.*
-import kotlin.math.cos
+import screeps.api.BodyPartConstant
+import screeps.api.CARRY
+import screeps.api.MOVE
+import screeps.api.WORK
 import kotlin.math.floor
 
-class UniformWCMAllocator: Allocator {
+class DoubleCarryWCMAllocator: Allocator {
     companion object {
-        public final val instance: Allocator = UniformWCMAllocator()
+        public final val instance: Allocator = DoubleCarryWCMAllocator()
     }
 
     override fun allocate(cost: Int, max: Int): Array<BodyPartConstant>? {
-        val possibleTotal = floor(max/200f)
-        val total = floor(cost /200f)
+        val possibleTotal = floor(max/250f)
+        val total = floor(cost /250f)
 
         // only allocate if at least 75% of the maximum are possible currently.
         if (total/possibleTotal < 0.75){
@@ -28,10 +30,10 @@ class UniformWCMAllocator: Allocator {
         for (i in 0 until total.toInt()){
             res.add(WORK)
             res.add(CARRY)
+            res.add(CARRY)
             res.add(MOVE)
         }
 
         return res.toTypedArray()
     }
-
 }

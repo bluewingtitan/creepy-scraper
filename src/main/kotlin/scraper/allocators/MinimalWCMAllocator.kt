@@ -6,15 +6,11 @@ class MinimalWCMAllocator: Allocator {
         public final val instance: Allocator = MinimalWCMAllocator()
     }
 
-
-
-
-    override fun allocate(maxCost: Int): Array<BodyPartConstant>? {
-        if (maxCost < 200){
+    override fun allocate(cost: Int, max: Int): Array<BodyPartConstant>? {
+        if (cost < 200){
             return null
         }
 
         return arrayOf(WORK, CARRY, MOVE)
     }
-
 }

@@ -17,9 +17,9 @@ class HarvestFromContainerTask: Task {
         }
 
 
-        val nextSource = creep.pos.findClosestByRange(FIND_MY_STRUCTURES, filter)
+        val nextSource = creep.room.find(FIND_MY_STRUCTURES, filter).firstOrNull() ?: return TaskResult.Succeeded
 
-        if (nextSource != null && creep.withdraw(nextSource.unsafeCast<StoreOwner>(), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+        if (creep.withdraw(nextSource.unsafeCast<StoreOwner>(), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
             creep.moveTo(nextSource)
         }
 

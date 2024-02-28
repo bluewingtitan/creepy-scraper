@@ -9,6 +9,7 @@ enum class RoleId{
     HARVEST,
     UPGRADE,
     BUILD,
+    REPAIR,
     DEFEND,
 }
 

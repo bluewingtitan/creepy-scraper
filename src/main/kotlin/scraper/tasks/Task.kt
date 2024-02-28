@@ -31,6 +31,7 @@ enum class TaskId{
     FILL_CONTAINER,
     UPGRADE,
     BUILD,
+    REPAIR,
 }
 
 /**

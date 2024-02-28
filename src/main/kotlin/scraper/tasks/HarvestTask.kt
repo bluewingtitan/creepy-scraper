@@ -1,8 +1,7 @@
 package scraper.tasks
 
-import screeps.api.Creep
-import screeps.api.ERR_NOT_IN_RANGE
-import screeps.api.FIND_SOURCES_ACTIVE
+import screeps.api.*
+import screeps.api.structures.Structure
 
 class HarvestTask: Task {
     override fun execute(creep: Creep): TaskResult {
@@ -10,7 +9,7 @@ class HarvestTask: Task {
             return TaskResult.Succeeded
         }
 
-        val nextSource = creep.pos.findClosestByRange(FIND_SOURCES_ACTIVE)
+        val nextSource = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE)
 
         if (nextSource != null && creep.harvest(nextSource) == ERR_NOT_IN_RANGE){
             creep.moveTo(nextSource)

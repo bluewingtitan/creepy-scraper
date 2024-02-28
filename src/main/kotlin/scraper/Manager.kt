@@ -2,6 +2,7 @@ package scraper
 
 import scraper.roles.*
 import scraper.stages.DefaultStage
+import scraper.stages.FixedStage
 import scraper.stages.Stage
 import scraper.tasks.*
 
@@ -18,6 +19,7 @@ object Manager {
             Pair(TaskId.FILL_CONTAINER, FillContainerTask()),
             Pair(TaskId.UPGRADE, UpgradeTask()),
             Pair(TaskId.BUILD, BuildTask()),
+            Pair(TaskId.REPAIR, RepairTask()),
     )
 
     fun getTask(id: TaskId): Task? {
@@ -35,6 +37,7 @@ object Manager {
             Pair(RoleId.HARVEST, HarvestRole()),
             Pair(RoleId.UPGRADE, UpgradeRole()),
             Pair(RoleId.BUILD, BuildRole()),
+            Pair(RoleId.REPAIR, RepairRole())
             // TODO: Defend Role
     )
 
@@ -48,7 +51,41 @@ object Manager {
 
 
     private final val stages: Map<Int, Stage> = mapOf(
-            Pair(0, DefaultStage())
+            Pair(0, DefaultStage()),
+            Pair(1, DefaultStage()),
+
+            Pair(2, FixedStage(mapOf(
+                    Pair(RoleId.BOOTSTRAP, 2),
+                    Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.UPGRADE, 2),
+                    Pair(RoleId.BUILD, 2),
+                    Pair(RoleId.REPAIR, 2),
+
+                    ))),
+            Pair(3, FixedStage(mapOf(
+                    Pair(RoleId.BOOTSTRAP, 2),
+                    Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.UPGRADE, 2),
+                    Pair(RoleId.BUILD, 2),
+                    Pair(RoleId.REPAIR, 2),
+
+                    ))),
+            Pair(4, FixedStage(mapOf(
+                    Pair(RoleId.BOOTSTRAP, 2),
+                    Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.UPGRADE, 2),
+                    Pair(RoleId.BUILD, 2),
+                    Pair(RoleId.REPAIR, 2),
+
+                    ))),
+            Pair(5, FixedStage(mapOf(
+                    Pair(RoleId.BOOTSTRAP, 2),
+                    Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.UPGRADE, 2),
+                    Pair(RoleId.BUILD, 2),
+                    Pair(RoleId.REPAIR, 2),
+
+                    ))),
     )
 
     fun getStage(id: Int): Stage {

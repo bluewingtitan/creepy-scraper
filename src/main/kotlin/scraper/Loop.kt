@@ -17,6 +17,8 @@ fun gameLoop(){
         val role = Manager.getRole(creep.memory.role)
 
         if (role == null){
+            // can't control it => can't use it.
+            creepPair.component2().suicide()
             console.log("Tried to get role " + creep.memory.role.toString() + " but found nothing.")
             continue
         }

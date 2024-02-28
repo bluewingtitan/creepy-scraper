@@ -20,6 +20,8 @@ object Spawner {
             if (!Game.creeps.contains(creepPair.component1())){
                 // creep is dead
                 delete(Memory.creeps[creepPair.component1()])
+            }else{
+                addToMap(creepPair.component2())
             }
         }
     }
@@ -34,28 +36,19 @@ object Spawner {
 
 
     fun fulfill(stage: Stage, room: Room){
-        console.log("a")
         for (roleCount in stage.getRoleCounts()){
-            console.log("b")
             if (roleCounts.contains(room.name) && roleCounts[room.name]!!.contains(roleCount.key)){
-                console.log("c")
                 val count = roleCounts[room.name]!![roleCount.key]
 
                 if (count!! < roleCount.value){
-                    if(spawn(roleCount.key, room)){
-                        return
-                    }else{
-                        continue
-                    }
+                    spawn(roleCount.key, room)
+                    return
                 }
 
             }else{
                 console.log("d")
-                if(spawn(roleCount.key, room)){
-                    return
-                }else{
-                    continue
-                }
+                spawn(roleCount.key, room)
+                return
             }
         }
 
@@ -66,7 +59,7 @@ object Spawner {
         val role = Manager.getRole(roleId) ?: return false
 
         // try to allocate, and don't spawn if no allocation was possible.
-        val allocation = role.getAllocator().allocate(room.energyAvailable) ?: return false
+        val allocation = role.getAllocator().allocate(room.energyAvailable, room.energyCapacityAvailable) ?: return false
 
         val spawn = room.find(FIND_MY_SPAWNS).firstOrNull { it.spawning == null } ?: return false
 

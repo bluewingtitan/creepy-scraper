@@ -3,6 +3,6 @@ package scraper.allocators
 import screeps.api.*
 
 interface Allocator {
-    fun allocate(maxCost: Int): Array<BodyPartConstant>?
+    fun allocate(cost: Int, max: Int): Array<BodyPartConstant>?
 }
 
