@@ -1,3 +1,4 @@
+import scraper.gameLoop
 
 
 /**
@@ -8,4 +9,5 @@
  */
 @Suppress("unused")
 fun loop() {
+    gameLoop()
 }
