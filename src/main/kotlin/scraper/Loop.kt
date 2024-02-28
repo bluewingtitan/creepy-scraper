@@ -4,6 +4,13 @@ import screeps.api.*
 
 
 fun gameLoop(){
+    // enable pixel mining
+    if (Game.cpu.bucket >= 10000){
+        Game.cpu.generatePixel()
+        return
+    }
+
+
     for (creepPair in Game.creeps){
         val creep = creepPair.component2()
 
