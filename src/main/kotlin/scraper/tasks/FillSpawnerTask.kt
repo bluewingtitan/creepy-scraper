@@ -13,7 +13,7 @@ class FillSpawnerTask: Task{
         val home = Game.rooms[creep.memory.homeRoomName] ?: return TaskResult.Failed
         val spawn = home.find(FIND_MY_SPAWNS).firstOrNull() ?: return TaskResult.Failed
 
-        if (spawn.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
+        if (spawn.store.getFreeCapacity(RESOURCE_ENERGY) < 1){
             return TaskResult.Succeeded
         }
 

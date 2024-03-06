@@ -7,6 +7,7 @@ enum class RoleId{
     IDLE,
     BOOTSTRAP,
     HARVEST,
+    SPAWN_SUPPORT,
     UPGRADE,
     BUILD,
     REPAIR,

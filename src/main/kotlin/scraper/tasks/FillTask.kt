@@ -12,13 +12,13 @@ abstract class FillTask<T: StoreOwner>(private val con: StructureConstant): Task
 
         val filter: FilterOption<Structure> = object : FilterOption<Structure> {
             override var filter: ((Structure) -> Boolean)? = {
-                it.structureType == con && (it as T).store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                it.structureType == con && (it.unsafeCast<T>()).store.getFreeCapacity(RESOURCE_ENERGY) > 0
             }
         }
 
         val nextSource = creep.room.find(FIND_MY_STRUCTURES, filter).firstOrNull() ?: return TaskResult.Succeeded // nothing to fill if returned zero.
 
-        if (creep.transfer((nextSource as T), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
+        if (creep.transfer((nextSource.unsafeCast<T>()), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
             creep.moveTo(nextSource)
         }
 

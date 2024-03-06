@@ -8,8 +8,8 @@ class RepairTask: Task {
             return TaskResult.Succeeded
         }
 
-        val targets = creep.room.find(FIND_MY_STRUCTURES)
-        targets.sortBy { it.hits }
+        var targets = creep.room.find(FIND_MY_STRUCTURES).filter { it.hits < it.hitsMax }
+        targets = targets.sortedBy { it.hits }
 
         if (targets.isNotEmpty()){
             if (creep.repair(targets[0]) == ERR_NOT_IN_RANGE){

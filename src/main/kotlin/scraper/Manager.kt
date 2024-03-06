@@ -35,6 +35,7 @@ object Manager {
             Pair(RoleId.IDLE, IdleRole()),
             Pair(RoleId.BOOTSTRAP, BootstrapRole()),
             Pair(RoleId.HARVEST, HarvestRole()),
+            Pair(RoleId.SPAWN_SUPPORT, SpawnSupportRole()),
             Pair(RoleId.UPGRADE, UpgradeRole()),
             Pair(RoleId.BUILD, BuildRole()),
             Pair(RoleId.REPAIR, RepairRole())
@@ -51,36 +52,35 @@ object Manager {
 
 
     private final val stages: Map<Int, Stage> = mapOf(
-            Pair(0, DefaultStage()),
             Pair(1, DefaultStage()),
 
             Pair(2, FixedStage(mapOf(
-                    Pair(RoleId.BOOTSTRAP, 2),
                     Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.SPAWN_SUPPORT, 1),
                     Pair(RoleId.UPGRADE, 2),
                     Pair(RoleId.BUILD, 2),
                     Pair(RoleId.REPAIR, 2),
 
                     ))),
             Pair(3, FixedStage(mapOf(
-                    Pair(RoleId.BOOTSTRAP, 2),
                     Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.SPAWN_SUPPORT, 1),
                     Pair(RoleId.UPGRADE, 2),
                     Pair(RoleId.BUILD, 2),
                     Pair(RoleId.REPAIR, 2),
 
                     ))),
             Pair(4, FixedStage(mapOf(
-                    Pair(RoleId.BOOTSTRAP, 2),
                     Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.SPAWN_SUPPORT, 1),
                     Pair(RoleId.UPGRADE, 2),
                     Pair(RoleId.BUILD, 2),
                     Pair(RoleId.REPAIR, 2),
 
                     ))),
             Pair(5, FixedStage(mapOf(
-                    Pair(RoleId.BOOTSTRAP, 2),
                     Pair(RoleId.HARVEST, 2),
+                    Pair(RoleId.SPAWN_SUPPORT, 1),
                     Pair(RoleId.UPGRADE, 2),
                     Pair(RoleId.BUILD, 2),
                     Pair(RoleId.REPAIR, 2),
